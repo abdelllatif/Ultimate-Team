@@ -1,3 +1,6 @@
+const popupContainer2 = document.getElementById("popupContainer");
+    const popupPlayerList2 = document.getElementById("popupPlayerInfo");
+
 const myInput = document.querySelector(".myinput");
 document.addEventListener("DOMContentLoaded", () => {
     const playerList = document.getElementById("playerList");
@@ -69,28 +72,21 @@ document.addEventListener("DOMContentLoaded", () => {
         .catch(err => console.error("Error loading players:", err));
 });
   
+document.getElementById('togglePopupBtn').addEventListener('click', function() {
+    var popupContainer = document.getElementById('popupFormContainer');
+    popupContainer.style.display = (popupContainer.style.display === 'block') ? 'none' : 'block';
+});
 
-// const popupFormContainer = document.getElementById("popupFormContainer");
+document.getElementById('closePopup').addEventListener('click', function() {
+    var popupContainer = document.getElementById('popupFormContainer');
+    popupContainer.style.display = 'none';
+});
+document.getElementById('closePopup2').addEventListener('click', function() {
+    var popupContainer = document.getElementById('popupFormContainer');
+    popupContainer2.style.display = 'none';
+});
 
 
-//     const openPopupButton = document.getElementById("openPopup");
-//     const closePopupButton = document.getElementById("closePopup");
-
-// document.addEventListener("DOMContentLoaded", () => {
-    
-
-//     openPopupButton.addEventListener("click", () => {
-//         popupFormContainer.classList.remove("hidden");
-//     });
-
-//     closePopupButton.addEventListener("click", () => {
-//         popupFormContainer.classList.add("hidden");
-//     });
-
-   
-// });
-
-// Select elements
 const popupFormContainer = document.getElementById('popupFormContainer');
 const togglePopupBtn = document.getElementById('togglePopupBtn');
 const closePopupBtn = document.getElementById('closePopup');
@@ -111,9 +107,8 @@ popupFormContainer.addEventListener('click', (event) => {
 document.addEventListener("DOMContentLoaded", () => {
     const playerPositionSelect = document.getElementById('playerPosition');
     const myInput = document.querySelector(".myinput");
-    const addPlayerButton = document.getElementById('btnAjouter'); // Button for adding player
+    const addPlayerButton = document.getElementById('btnAjouter'); 
 
-    // Function to update the input fields based on position (GK or other)
     function updateInputs(position) {
         if (position === "GK") {
             myInput.innerHTML = `
@@ -225,166 +220,237 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 });
 
-const buttons = document.querySelectorAll('.players button');
 
-// Select the popup container
-const popup = document.getElementById('playerPopup'); 
-const popupCloseButton = document.getElementById('popupCloseButton'); // Button to close the popup
 
-buttons.forEach(button => {
-    button.addEventListener('click', function() {
-        const player = button.textContent.trim(); // Get the player position from button text
-        
-        // Initialize variables for the player's details
-        let playerName = "", playerPosition = player, playerImg = "", playerRating = "", playerPace = "", playerShooting = "",
-            playerPassing = "", playerDribbling = "", playerDefending = "", playerPhysical = "", clubName = "",
-            nationalityName = "", clubImg = "", nationalityImg = "";
-        
-        // Define player details based on the position selected
-        switch(player) {
-            case 'st':
-                const  buttons = document.querySelectorAll('.players button'); 
-                 playerContent.innerHTML = `
-                <div class="popup-content">
-                    <button class="close-btn" id="popupCloseButton">&times;</button>
-                    <img src="${playerImg}" alt="${playerName}" class="player-photo">
-                    <div class="player-info">
-                        <h4>${playerName}</h4>
-                        <p>Position: ${playerPosition}</p>
-                        <div class="player-grid">
-                            <div class="player-info-name"> RAT PAC SHO PAS DRI DEF PHY</div>
-                            <div class="player-info">
-                                <span>${playerRating}</span>
-                                <span>${playerPace}</span>
-                                <span>${playerShooting}</span>
-                                <span>${playerPassing}</span>
-                                <span>${playerDribbling}</span>
-                                <span>${playerDefending}</span>
-                                <span>${playerPhysical}</span>
-                            </div>
-                        </div>
-                        <p><img src="${clubImg}" alt="${clubName}" class="club-logo"> ${clubName}</p>
-                        <p><img src="${nationalityImg}" alt="${nationalityName}" class="flag-icon"> ${nationalityName}</p>
-                    </div>
-                </div>
-            `;
+
+// function addPlayerPopup(position, button) {
+//     const popupposition = document.querySelector('.positionplay').value;
+//     const popupContainer = document.querySelector('.container2');
+//     const popupPlayerInfo = document.getElementById('popupPlayerInfo');
+//     popupContainer.style.display = 'block';
     
-            case 'lm':
-                playerName = "Left Midfielder";
-                playerImg = "images/lm.png";
-                playerRating = "80";
-                playerPace = "85";
-                playerShooting = "80";
-                playerPassing = "85";
-                playerDribbling = "88";
-                playerDefending = "75";
-                playerPhysical = "80";
-                clubName = "Real Madrid";
-                nationalityName = "Spain";
-                clubImg = "images/realmadrid.png";
-                nationalityImg = "images/spain.png";
-                break;
-            case 'cm':
-                playerName = "Central Midfielder";
-                playerImg = "images/cm.png";
-                playerRating = "83";
-                playerPace = "80";
-                playerShooting = "82";
-                playerPassing = "88";
-                playerDribbling = "85";
-                playerDefending = "80";
-                playerPhysical = "85";
-                clubName = "Manchester City";
-                nationalityName = "England";
-                clubImg = "images/manchester.png";
-                nationalityImg = "images/england.png";
-                break;
-            case 'cdm':
-                playerName = "Defensive Midfielder";
-                playerImg = "images/cdm.png";
-                playerRating = "86";
-                playerPace = "75";
-                playerShooting = "80";
-                playerPassing = "88";
-                playerDribbling = "84";
-                playerDefending = "90";
-                playerPhysical = "88";
-                clubName = "Chelsea";
-                nationalityName = "Germany";
-                clubImg = "images/chelsea.png";
-                nationalityImg = "images/germany.png";
-                break;
-            case 'rm':
-                playerName = "Right Midfielder";
-                playerImg = "images/rm.png";
-                playerRating = "80";
-                playerPace = "85";
-                playerShooting = "80";
-                playerPassing = "85";
-                playerDribbling = "90";
-                playerDefending = "70";
-                playerPhysical = "80";
-                clubName = "Paris Saint-Germain";
-                nationalityName = "France";
-                clubImg = "images/psg.png";
-                nationalityImg = "images/france.png";
-                break;
-            case 'cb':
-                playerName = "Center Back";
-                playerImg = "images/cb.png";
-                playerRating = "88";
-                playerPace = "70";
-                playerShooting = "65";
-                playerPassing = "75";
-                playerDribbling = "70";
-                playerDefending = "90";
-                playerPhysical = "90";
-                clubName = "Bayern Munich";
-                nationalityName = "Germany";
-                clubImg = "images/bayern.png";
-                nationalityImg = "images/germany.png";
-                break;
-            case 'Gk':
-                playerName = "Goalkeeper";
-                playerImg = "images/gk.png";
-                playerRating = "90";
-                playerPace = "60";
-                playerShooting = "55";
-                playerPassing = "75";
-                playerDribbling = "60";
-                playerDefending = "85";
-                playerPhysical = "90";
-                clubName = "Liverpool";
-                nationalityName = "Brazil";
-                clubImg = "images/liverpool.png";
-                nationalityImg = "images/brazil.png";
-                break;
+// if(popupposition=='st'){addPlayerPopup
+//     popupPlayerInfo.innerHTML = `
+//       <button class="add-to-team-btn">
+//                     <img src="${playerImg}" alt="${playerName}" class="player-photo">
+//                     <div class="player-info">
+//                         <h4>${playerName}</h4>
+//                         <p>Position: ${playerPosition}</p>
+//                         <div class="player-grid">
+//                             <div class="player-info-name"> RAT PAC SHO PAS DRI DEF PHY</div>
+//                             <div class="player-info">
+//                                 <span>${playerRating}</span>
+//                                 <span>${playerPace}</span>
+//                                 <span>${playerShooting}</span>
+//                                 <span>${playerPassing}</span>
+//                                 <span>${playerDribbling}</span>
+//                                 <span>${playerDefending}</span>
+//                                 <span>${playerPhysical}</span>
+//                             </div>
+//                             <p><img src="${clubImg}" alt="${clubName}" class="club-logo"> ${clubName}</p>
+//                             <p><img src="${nationalityimg}" alt="${nationalityname}" class="flag-icon"> ${nationalityname}</p>
+//                         </div>
+//                     </div>
+//                 </button>
+//             `;
+// }
 
-        const playerContent = `
-            <div class="popup-content">
-                <button class="close-btn" id="popupCloseButton">&times;</button>
-                <img src="${playerImg}" alt="${playerName}" class="player-photo">
-                <div class="player-info">
-                    <h4>${playerName}</h4>
-                    <p>Position: ${playerPosition}</p>
-                    <div class="player-grid">
-                        <div class="player-info-name"> RAT PAC SHO PAS DRI DEF PHY</div>
-                        <div class="player-info">
-                            <span>${playerRating}</span>
-                            <span>${playerPace}</span>
-                            <span>${playerShooting}</span>
-                            <span>${playerPassing}</span>
-                            <span>${playerDribbling}</span>
-                            <span>${playerDefending}</span>
-                            <span>${playerPhysical}</span>
-                        </div>
+
+
+
+
+
+
+//     // popupPlayerInfo.innerHTML = `
+//     //     <h2>Choose a player for position: ${position.toUpperCase()}</h2>
+//     //     <input type="text" id="playerName" placeholder="Enter Player Name" />
+//     //     <button onclick="addPlayer('${position}')">Add Player</button>
+//     // `;
+
+//     const closePopupBtn = document.getElementById('closePopup2');
+//     closePopupBtn.onclick = () => {
+//         popupContainer.style.display = 'none';  
+//     };
+// }
+function addPlayerPopup(position, button) {
+    selectedPosition = position;
+    popupPlayerList2.innerHTML=''
+
+    
+    popupContainer2.style.display = "block";
+
+    // popupPlayerList.innerHTML = ''; // Clear previous player list
+
+    // Fetch and display players for the selected position
+    fetch('./players.json')
+        .then(res => res.json())
+        .then(data => {
+            const players = data.players.filter(player => player.position.toLowerCase() === position );
+            players.forEach(player => {
+                const playerItem = document.createElement("div");
+                playerItem.className = "player-item";
+              
+                playerItem.innerHTML = `
+                    <div class="player-info" style="width:300px;" >
+                        <img src="${player.photo}" alt="${player.name}" class="player-photo " style="width:100px;height:180px;">
+                        <h4>${player.name}</h4>
+                        <p>Position: ${player.position}</p>
+                        <button class="select-player-btn" style="background-color:red">Select</button>
                     </div>
-                    <p><img src="${clubImg}" alt="${clubName}" class="club-logo"> ${clubName}</p>
-                    <p><img src="${nationalityImg}" alt="${nationalityName}" class="flag-icon"> ${nationalityName}</p>
-                </div>
+                `;
+                playerItem.querySelector(".select-player-btn").addEventListener("click", () => {
+                    if(player.position=='GK'){
+                        button.innerHTML = `
+                        <div class="player-infos"  style="  background-image: url(/src/assets/img/badge_total_rush.webp) ;
+        background-size:contain ;
+        background-repeat: no-repeat; ">
+                            <img src="${player.photo}" alt="${player.name}" class="player-photos " style="width:80px;height:70px;  ">
+                            <p style="font-size:9px; width:120px;text-align: center;">${player.name}</p>
+                            <p> ${player.position}</p>
+                            <div class="player-info-name" style="font-size:6px"  > RAT DIV HAN KIC REF SPD POS</div>
+                             <div class="player-info"> <span style="font-size:6px"> ${player.rating}</span><span style="font-size:6px"> ${player.diving}</span><span style="font-size:6px"> ${player.handling}</span><span style="font-size:6px"> ${player.kicking} </span><span style="font-size:6px">${player.reflexes}</span><span style="font-size:6px">${player.speed}</span><span style="font-size:6px">${player.positioning}</span></div>
+                            <button  class="select-player-btnes" style="background-color:red; font-size:6px" >Select</button>
+    
+                        </div>
+                    `;
+                    }
+                    else{
+                    button.innerHTML = `
+                    <div class="player-info"  style="background-image: url(/src/assets/img/badge_total_rush.webp) ;
+    background-size:contain ;
+    background-repeat: no-repeat;">
+                        <img src="${player.photo}" alt="${player.name}" class="player-photos " style="width:80px;height:70px;  ">
+                        <p style="font-size:10px; width:120px;text-align: center;">${player.name}</p>
+                        <p> ${player.position}</p>
+                        <div class="player-info-name" style="font-size:7px"> ${'RAT'} ${'PAC'} ${'SHO'} ${'PAS'} ${'DRI'} ${'DEF'}  ${'PHY'} </div>
+                        <div class="player-info"  > <span style="font-size:6px">${player.rating}</span> <span style="font-size:6px">${player.pace}</span> <span style="font-size:6px">${player.shooting}</span> <span style="font-size:6px">${player.passing}</span><span style="font-size:6px"> ${player.dribbling}</span><span style="font-size:6px">${player.defending}</span> <span style="font-size:6px">${player.physical}</span> </div>
+                <button  class="select-player-btnes" style="background-color:red; font-size:6px" >Select</button>
+
+                    </div>
+                `;
+
+            }
+                 });
+                popupPlayerList2.appendChild(playerItem);
+            });
+        })
+        .catch(err => console.error("Error loading players:", err));
+ 
+}
+
+let allPlayers = []; // Array to store all players (fetched + added)
+
+const displayPlayersByPosition = (position) => {
+    // Clear existing displayed players
+    popupPlayerList2.innerHTML = '';
+
+    // Filter players by position and display them
+    const playersToDisplay = allPlayers.filter(player => player.position.toLowerCase() === position);
+    
+    playersToDisplay.forEach(player => {
+        const playerItem = document.createElement("div");
+        playerItem.className = "player-item";
+
+        playerItem.innerHTML = `
+            <div class="player-info" style="width:300px;">
+                <img src="${player.photo}" alt="${player.name}" class="player-photo " style="width:100px;height:180px;">
+                <h4>${player.name}</h4>
+                <p>Position: ${player.position}</p>
+                <button class="select-player-btn" style="background-color:red">Select</button>
             </div>
         `;
+        playerItem.querySelector(".select-player-btn").addEventListener("click", () => {
+            if(player.position === 'GK'){
+                button.innerHTML = `
+                    <div class="player-infos"  style="background-image: url(/src/assets/img/badge_total_rush.webp); background-size:contain; background-repeat: no-repeat;">
+                        <img src="${player.photo}" alt="${player.name}" class="player-photos " style="width:80px;height:70px;">
+                        <p style="font-size:9px; width:120px;text-align: center;">${player.name}</p>
+                        <p> ${player.position}</p>
+                        <div class="player-info-name" style="font-size:6px"> RAT DIV HAN KIC REF SPD POS</div>
+                        <div class="player-info"> 
+                            <span style="font-size:6px">${player.rating}</span>
+                            <span style="font-size:6px">${player.diving}</span>
+                            <span style="font-size:6px">${player.handling}</span>
+                            <span style="font-size:6px">${player.kicking}</span>
+                            <span style="font-size:6px">${player.reflexes}</span>
+                            <span style="font-size:6px">${player.speed}</span>
+                            <span style="font-size:6px">${player.positioning}</span>
+                        </div>
+                        <button class="select-player-btnes" style="background-color:red; font-size:6px">Select</button>
+                    </div>
+                `;
+            } else {
+                button.innerHTML = `
+                    <div class="player-info" style="background-image: url(/src/assets/img/badge_total_rush.webp); background-size:contain; background-repeat: no-repeat;">
+                        <img src="${player.photo}" alt="${player.name}" class="player-photos " style="width:80px;height:70px;">
+                        <p style="font-size:10px; width:120px;text-align: center;">${player.name}</p>
+                        <p>${player.position}</p>
+                        <div class="player-info-name" style="font-size:7px"> RAT PAC SHO PAS DRI DEF PHY </div>
+                        <div class="player-info">
+                            <span style="font-size:6px">${player.rating}</span>
+                            <span style="font-size:6px">${player.pace}</span>
+                            <span style="font-size:6px">${player.shooting}</span>
+                            <span style="font-size:6px">${player.passing}</span>
+                            <span style="font-size:6px">${player.dribbling}</span>
+                            <span style="font-size:6px">${player.defending}</span>
+                            <span style="font-size:6px">${player.physical}</span>
+                        </div>
+                        <button class="select-player-btnes" style="background-color:red; font-size:6px">Select</button>
+                    </div>
+                `;
+            }
+        });
 
-   
+        popupPlayerList2.appendChild(playerItem);
     });
+};
+
+
+
+
+
+
+
+
+addPlayerButton.addEventListener("click", (e) => {
+    e.preventDefault(); 
+
+    const playerName = document.getElementById('playerName').value;
+    const playerImg = document.getElementById('playerimg').value;
+    const clubImg = document.getElementById('clubimg').value;
+    const clubName = document.getElementById('clubname').value;
+    const playerPosition = document.getElementById('playerPosition').value;
+    const nationalityimg = document.getElementById('nationalityimg').value;
+    const nationalityname = document.getElementById('nationalityname').value;
+
+    const newPlayer = {
+        name: playerName,
+        photo: playerImg,
+        position: playerPosition,
+        clubLogo: clubImg,
+        clubName: clubName,
+        nationalityImg: nationalityimg,
+        nationalityName: nationalityname,
+        rating: document.getElementById('playerRating').value,
+        diving: document.getElementById('playerDiving').value,
+        handling: document.getElementById('playerHandling').value,
+        kicking: document.getElementById('playerKicking').value,
+        reflexes: document.getElementById('playerReflexes').value,
+        speed: document.getElementById('playerSpeed').value,
+        positioning: document.getElementById('playerPositioning').value,
+        pace: document.getElementById('playerPace').value,
+        shooting: document.getElementById('playerShooting').value,
+        passing: document.getElementById('playerPassing').value,
+        dribbling: document.getElementById('playerDribbling').value,
+        defending: document.getElementById('playerDefending').value,
+        physical: document.getElementById('playerPhysical').value,
+    };
+
+    allPlayers.push(newPlayer);
+    displayPlayersByPosition(playerPosition); 
 });
+
+
+
+
+

@@ -191,6 +191,16 @@ main {
     height: 71vh;
 }
 
+
+
+
+
+
+
+
+
+
+
 .close-btn {
     padding: 0;
     margin: 0;
@@ -199,14 +209,18 @@ main {
     font-size: 20px;
     cursor: pointer;
 }
+.positionplay{
 
+    
+    height: 100px;
+}
 button {
  
     font-size: 16px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    background-color: #007bff;
+  
     color: white;
 }
 button:hover {
@@ -214,7 +228,7 @@ button:hover {
 }
 
 .right-content {
-    background-color: #fff;
+    /* background-color: #fff; */
     width: 100%;
     max-width: 800px;
     padding: 20px;
@@ -238,7 +252,8 @@ button:hover {
     cursor: pointer;
     padding-top: 7rem;
 }
-button {
+#btnAjouter,
+#togglePopupBtn {
     padding: 10px 20px;
     background-color: #4CAF50;
     color: #fff;
@@ -276,11 +291,14 @@ button {
     gap: 50px;
     margin-bottom: 20px;
 }
+
 .buttons-top button,
 .buttons-middle button,
-.buttons-bottom button {
+.buttons-bottom button,
+.buttons-single button
+
+{
     padding: 10px 20px;
-    background-color: #3498db;
     color: #fff;
     border-radius: 5px;
     font-size: 16px;
@@ -341,6 +359,7 @@ button:hover {
     font-family: 'Arial', sans-serif;
 }
     /* **********************************************************************************/   
+    
 .player-list {
     display: flex;
     flex-wrap: wrap;
@@ -457,7 +476,10 @@ form select{
    outline: none;
     
     }
-
+    .popup-container {
+        display: none;
+    }
+    
  
 @media (max-width: 768px) {
     main {
@@ -508,6 +530,8 @@ align-items:center ;
     cursor: pointer;
     padding-top: 4rem;
 }
+
+
 .buttons-single {
     margin-top: 0; 
     display: grid;
@@ -531,14 +555,62 @@ flex-direction: column;
     height: 80vh; 
     background-size: cover;
   }
-  
+  .player-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap:0; /* المسافة بين البطاقات */
+    justify-content: center; /* محاذاة العناصر أفقياً */
+    padding: 80px;
+}
+
+.player-item {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    width: 900px; /* عرض البطاقة */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.player-photo {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 10px;
+}
+
+.player-info h4 {
+    margin: 5px 0;
+    font-size: 1.1em;
+    color: #333;
+    
+}
+
+.player-info p {
+    font-size: 0.9em;
+    color: #666;
+}
+
+/* .select-player-btn {
+    background-color: coral;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.select-player-btn:hover {
+    background-color: darkorange;
+} */
+
   .events img {
     height: 60vh; 
     object-fit: contain; 
   }
 
 .right-content {
-    background-color: #fff;
     width: 100%;
     max-width: 800px;
     padding: 20px;
@@ -556,9 +628,10 @@ flex-direction: column;
         background-color: #34495e;
         padding: 10px 0; 
     }
-
+    select-player-btns,
     .nav-links.active { 
         display: flex; 
+        
     }
 
     .hamburger {
